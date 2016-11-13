@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue起步</title>
+</head>
+<body>
+	<div id="app">
+	  <p>{{ message }}</p>
+	</div>
+	<div id="app-2">
+	  <span v-bind:title="message">
+	    Hover your mouse over me for a few seconds to see my dynamically bound title!
+	  </span>
+	</div>
+	<div id="app-3">
+	  <p v-if="seen">Now you see me</p>
+	</div>
+	<div id="app-4">
+		<ol>
+			<li v-for="todo in todos">
+				{{todo.text}}
+			</li>
+		</ol>
+	</div>
+	<div id="app-5">
+		<p>{{ message }}</p>
+		<button v-on:click="reverseMessage">Reverse Message</button>
+	</div>
+	<div id="app-6">
+		<p>{{ message }}</p>
+		<input type="text" v-model="message">
+	</div>
+	<div id="app-7">
+		<ol>
+			<todo-item v-for="item in groceryList" v-bind:todo="item"></todo-item>
+		</ol>
+	</div>
+
+	<!-- <div id="watch-example">
+	  <p>
+	    Ask a yes/no question:
+	    <input v-model="question">
+	  </p>
+	  <p>{{ answer }}</p>
+	</div> -->
+
+	<div id="app-8">
+		<div v-if="Math.random() > 0.5">
+		  Sorry
+		</div>
+		<div v-else>
+		  Not sorry
+		</div>
+	</div>
+	<div id="app-9">
+		<ul>
+			<li v-for="(item, index) in items">
+				{{parentMessage}} - {{index}} - {{item.message}}
+			</li>
+		</ul>
+	</div>
+	<div id="app-10">
+		<ul>
+			<li v-for="n in evenNumbers">{{ n }}</li>
+		</ul>
+	</div>
+	<div id="app-11">
+		<button v-on:click="greet">Greet</button>
+	</div>
+	<div id="app-12">
+		<input type="checkbox" id="checkbox" v-model="checked">
+		<label for="checkbox">{{ checked }}</label>
+	</div>
+	<div id="app-13">
+		<input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+		<label for="jack">Jack</label>
+		<input type="checkbox" id="john" value="John" v-model="checkedNames">
+		<label for="john">John</label>
+		<input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+		<label for="mike">Mike</label>
+		<br>
+		<span>Checked names: {{ checkedNames }}</span>
+	</div>
+	<div id="app-14">
+		<select v-model="selected">
+			<option v-for="option in options" v-bind:value="option.value">{{option.value}}</option>
+		</select>
+		<span>Selected: {{ selected }}</span>
+	</div>
+	<div id="app-15">
+		<my-component></my-component>
+	</div>
+	<div id="app-16">
+		<simple-counter></simple-counter>
+		<simple-counter></simple-counter>
+		<simple-counter></simple-counter>
+	</div>
+	<div id="app-17">
+		<child :message="abc"></child>
+	</div>
+	<div id="app-18">
+		<input type="text" v-model="message">
+		<br>
+		<child :message="message"></child>
+	</div>
+	<br>
+	<div id="app-19">
+		<span>{{counterTotal}}</span>
+		<br>
+		<button-counter @increment="incrementTotal"></button-counter>
+		<button-counter @increment="incrementTotal"></button-counter>
+	</div>
+	
+
+	<script src="vue.js"></script>
+	<!-- <script src="https://unpkg.com/axios@0.12.0/dist/axios.min.js"></script>
+	<script src="https://unpkg.com/lodash@4.13.1/lodash.min.js"></script> -->
+	<script src="main.js"></script>
+</body>
+</html>
