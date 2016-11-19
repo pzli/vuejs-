@@ -221,7 +221,7 @@ var app18 = new Vue({
 });
 
 Vue.component("button-counter", {
-	template: "<button v-on:click='increment'>{{ counter }}</button>",
+	template: "<input @keyup.enter='increment' v-model='counter'></input>",
 	data: function(){
 		return {
 			counter: 0
@@ -230,7 +230,7 @@ Vue.component("button-counter", {
 	methods: {
 		increment: function(){
 			this.counter += 1;
-			this.$emit('increment');
+			this.$emit('increment', this.counter);
 		}
 	}
 });
@@ -241,8 +241,65 @@ var app19 = new Vue({
 		counterTotal: 0
 	},
 	methods: {
-		incrementTotal: function(){
+		incrementTotal: function(counter){
 			this.counterTotal += 1;
+			console.log(counter);
 		}
 	} 
 })
+
+
+Vue.component("example-child",{
+	template: "\
+	<div>\
+		<h2>I'm the child title</h2>\
+		<slot>\
+			如果没有分发内容则显示我。\
+		</slot>\
+	</div>\
+	"
+});
+
+Vue.component("example-parent",{
+	template: "\
+	<div>\
+	  <h1>I'm the parent title</h1>\
+	  <example-child>\
+	    <p>This is some original content</p>\
+	    <p>This is some more original content</p>\
+	  </example-child>\
+	</div>\
+	"
+});
+var app20 = new Vue({
+	el: "#app-20"
+});
+
+Vue.component("app-layout", {
+	template: '\
+		<div class="container">\
+		  <header>\
+		    <slot name="header"></slot>\
+		  </header>\
+		  <main>\
+		    <slot></slot>\
+		  </main>\
+		  <footer>\
+		    <slot name="footer"></slot>\
+		  </footer>\
+		</div>\
+	'
+});
+Vue.component("app-layout-parent", {
+	template: '\
+		<app-layout>\
+		  <h1 slot="header">Here might be a page title</h1>\
+		  <p>A paragraph for the main content.</p>\
+		  <p>And another one.</p>\
+		  <p slot="footer">Here\'s some contact info</p>\
+		</app-layout>\
+	'
+});
+var app21 = new Vue({
+	el: "#app-21"
+});
