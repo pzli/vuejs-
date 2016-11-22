@@ -129,48 +129,30 @@
 		
 	});
 
-	// var router = new VueRouter({
-	// 	routes: [
-	// 		{
-	// 			path: "/",
-	// 			beforeEnter: function(to, from, next){
-	//         next(function(){
-	//         	console.log("all");
-	//         	app.visibility = "all";
-	//         })
-	//       }
-	// 		},
-	// 		{
-	// 			path: "/all",
-	// 			beforeEnter: function(to, from, next){
-	//         next(function(){
-	//         	console.log("all");
-	//         	app.visibility = "all"
-	//         })
-	//       }
-	// 		},
-	// 		{
-	// 			path: "/active",
-	// 			beforeEnter: function(to, from, next){
-	//         next(function(){
-	//         	console.log("active");
-	//         	app.visibility = "active"
-	//         })
-	//       }
-	// 		},
-	// 		{
-	// 			path: "/completed",
-	// 			beforeEnter: function(to, from, next){
-	//         next(function(){
-	//         	console.log("completed");
-	//         	app.visibility = "completed"
-	//         })
-	//       }
-	// 		}
-	// 	]
-
-	// });
-	// 没看懂vue-router怎么通过路由切换一个Vue实例的某个属性,所以还是用了director.js
+	/*var router = new VueRouter({
+		routes: [
+			{
+				path: "/:status",
+				component: {
+					template:""
+				}
+				
+			},
+			{
+				path: "/all",
+			},
+			{
+				path: "/active"
+			},
+			{
+				path: "/completed",
+				
+			}
+		]
+	});*/
+	
+	// 可以用vue-router来完成路由切换,但是我没有用template耳饰直接诶在index.html里写了html,所以还是用了director.js
+	// 可以用$route.params.value来选择渲染那些数据.
 	var router = new Router();
 
 	['all', 'active', 'completed'].forEach(function (visibility) {
